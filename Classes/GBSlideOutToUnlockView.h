@@ -24,7 +24,9 @@
 
 @interface GBSlideOutToUnlockView : UIView
 
-@property (weak, nonatomic) id<GBSlideOutToUnlockViewDelegate> delegate;
+@property (nonatomic, weak) id<GBSlideOutToUnlockViewDelegate> delegate;
+@property (nonatomic, assign) CGFloat innerCircleRadius;
+@property (nonatomic, assign) CGFloat outerCircleRadius;
 
 - (void)startAnimating;
 - (void)stopAnimating;

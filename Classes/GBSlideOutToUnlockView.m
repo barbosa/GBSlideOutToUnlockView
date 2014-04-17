@@ -11,11 +11,11 @@
 #import <QuartzCore/QuartzCore.h>
 
 #define MARGIN 60.0f
-#define SMALL_CIRCLE_RADIUS 25.0f
+
+static CGFloat const kDefaultInnerCircleRadius = 25.0f;
 
 @interface GBSlideOutToUnlockView ()
 {
-    CGFloat _bigCircleRadius;
     BOOL _unlockOnRelease;
 }
 
@@ -36,6 +36,18 @@
     return self;
 }
 
+#pragma mark - Acessors
+
+- (CGFloat)innerCircleRadius
+{
+    return _innerCircleRadius ?: kDefaultInnerCircleRadius;
+}
+
+- (CGFloat)outerCircleRadius
+{
+    return _outerCircleRadius ?: (MIN(CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds)) / 2) - MARGIN;
+}
+
 - (void)drawRect:(CGRect)rect
 {
     [self drawBigCircle];
@@ -47,8 +59,7 @@
 
 - (void)drawBigCircle
 {
-    _bigCircleRadius = (MIN(CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds)) / 2) - MARGIN;
-    [self drawCircleWithRadius:_bigCircleRadius];
+    [self drawCircleWithRadius:self.outerCircleRadius];
 }
 
 - (void)drawCircleWithRadius:(CGFloat)radius
@@ -72,7 +83,7 @@
 
 - (void)drawSmallCircle
 {
-    [self drawCircleWithRadius:SMALL_CIRCLE_RADIUS];
+    [self drawCircleWithRadius:self.innerCircleRadius];
 }
 
 - (void)addAnimationDotView
@@ -83,21 +94,23 @@
     _animationDotView.layer.cornerRadius = size / 2;
     [self addSubview:_animationDotView];
     
-    _animationDotView.center = CGPointMake(self.center.x, self.center.y - _bigCircleRadius);
+    _animationDotView.center = CGPointMake(self.center.x, self.center.y - self.outerCircleRadius);
 }
 
 - (void)addRedeemImageAtCenter
 {
+    CGFloat radius = _innerCircleRadius ?: kDefaultInnerCircleRadius;
+    
     UIImage *image = [UIImage imageNamed:@"icone_erro"];
     _imageView = [[UIImageView alloc] initWithImage:image];
     _imageView.userInteractionEnabled = YES;
     _imageView.backgroundColor = self.tintColor;
     _imageView.contentMode = UIViewContentModeCenter;
-    _imageView.layer.cornerRadius = SMALL_CIRCLE_RADIUS;
+    _imageView.layer.cornerRadius = radius;
     _imageView.clipsToBounds = YES;
     
     CGRect imageFrame = _imageView.frame;
-    imageFrame.size = CGSizeMake(2*SMALL_CIRCLE_RADIUS, 2*SMALL_CIRCLE_RADIUS);
+    imageFrame.size = CGSizeMake(2*radius, 2*radius);
     _imageView.frame = imageFrame;
     
     [self addSubview:_imageView];
@@ -122,7 +135,7 @@
         CGPoint translation = [gestureRecognizer translationInView:self];
         _imageView.center = CGPointMake(self.center.x + translation.x,
                                         self.center.y + translation.y);
-        _unlockOnRelease = sqrt(pow(_imageView.center.x-self.center.x, 2) + pow(_imageView.center.y-self.center.y, 2)) > _bigCircleRadius + SMALL_CIRCLE_RADIUS;
+        _unlockOnRelease = sqrt(pow(_imageView.center.x-self.center.x, 2) + pow(_imageView.center.y-self.center.y, 2)) > self.outerCircleRadius + self.innerCircleRadius;
     }
     
     if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
@@ -145,10 +158,10 @@
     circlePathAnimation.repeatCount = INFINITY;
     
     CGMutablePathRef circularPath = CGPathCreateMutable();
-    CGRect pathRect = CGRectMake(self.center.x - _bigCircleRadius,
-                                 self.center.y - _bigCircleRadius,
-                                 2 * _bigCircleRadius,
-                                 2 * _bigCircleRadius);
+    CGRect pathRect = CGRectMake(self.center.x - self.outerCircleRadius,
+                                 self.center.y - self.outerCircleRadius,
+                                 2 * self.outerCircleRadius,
+                                 2 * self.outerCircleRadius);
     CGPathAddEllipseInRect(circularPath, NULL, pathRect);
     circlePathAnimation.path = circularPath;
     CGPathRelease(circularPath);
