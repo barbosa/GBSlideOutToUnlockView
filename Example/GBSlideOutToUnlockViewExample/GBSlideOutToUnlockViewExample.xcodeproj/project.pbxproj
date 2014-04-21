@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		150B6E3A1905707900FFC06D /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 150B6E391905707900FFC06D /* ViewController.xib */; };
 		154BB9F218FF304A00DB87A9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 154BB9F118FF304A00DB87A9 /* Foundation.framework */; };
 		154BB9F418FF304A00DB87A9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 154BB9F318FF304A00DB87A9 /* CoreGraphics.framework */; };
 		154BB9F618FF304A00DB87A9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 154BB9F518FF304A00DB87A9 /* UIKit.framework */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		150B6E391905707900FFC06D /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
 		154BB9EE18FF304A00DB87A9 /* GBSlideOutToUnlockViewExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GBSlideOutToUnlockViewExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		154BB9F118FF304A00DB87A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		154BB9F318FF304A00DB87A9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -120,6 +122,7 @@
 				154BB9F818FF304A00DB87A9 /* Supporting Files */,
 				154BBA2418FF330E00DB87A9 /* ViewController.h */,
 				154BBA2518FF330E00DB87A9 /* ViewController.m */,
+				150B6E391905707900FFC06D /* ViewController.xib */,
 			);
 			path = GBSlideOutToUnlockViewExample;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				154BB9FC18FF304A00DB87A9 /* InfoPlist.strings in Resources */,
+				150B6E3A1905707900FFC06D /* ViewController.xib in Resources */,
 				154BBA0418FF304A00DB87A9 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -457,6 +461,7 @@
 				154BBA1C18FF304A00DB87A9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		154BBA1D18FF304A00DB87A9 /* Build configuration list for PBXNativeTarget "GBSlideOutToUnlockViewExampleTests" */ = {
 			isa = XCConfigurationList;
@@ -465,6 +470,7 @@
 				154BBA1F18FF304A00DB87A9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
