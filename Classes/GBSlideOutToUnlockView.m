@@ -10,13 +10,15 @@
 
 #import <QuartzCore/QuartzCore.h>
 
-#define MARGIN 60.0f
 
 static CGFloat const kDefaultInnerCircleRadius = 25.0f;
 
 @interface GBSlideOutToUnlockView ()
 {
     BOOL _unlockOnRelease;
+    
+    CGRect outerCircleRect;
+    CGRect innerCircleRect;
 }
 
 @property (strong, nonatomic) UIImageView *imageView;
@@ -45,45 +47,40 @@ static CGFloat const kDefaultInnerCircleRadius = 25.0f;
 
 - (CGFloat)outerCircleRadius
 {
-    return _outerCircleRadius ?: (MIN(CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds)) / 2) - MARGIN;
+    if (_outerCircleRadius)
+        return _outerCircleRadius;
+    
+    CGFloat horizontalSize = CGRectGetWidth(self.bounds);
+    CGFloat verticalSize = CGRectGetHeight(self.bounds);
+    
+    return MIN(horizontalSize, verticalSize) / 2.0f;
 }
 
 - (void)drawRect:(CGRect)rect
 {
-    [self drawBigCircle];
-    [self drawSmallCircle];
+    outerCircleRect = [self drawCircleWithRadius:self.outerCircleRadius];
+    innerCircleRect = [self drawCircleWithRadius:self.innerCircleRadius];
+    
     [self addAnimationDotView];
     [self addRedeemImageAtCenter];
     [self addPanGestureRecognizerToImage];
 }
 
-- (void)drawBigCircle
+- (CGRect)drawCircleWithRadius:(CGFloat)radius
 {
-    [self drawCircleWithRadius:self.outerCircleRadius];
-}
-
-- (void)drawCircleWithRadius:(CGFloat)radius
-{
-    CGPoint center;
-    center.x = CGRectGetMinX(self.bounds) + CGRectGetWidth(self.bounds)/2;
-    center.y = CGRectGetMinY(self.bounds) + CGRectGetHeight(self.bounds)/2;
-    
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetLineWidth(context, 1.0);
     CGContextSetStrokeColorWithColor(context, self.tintColor.CGColor);
     
-    CGRect circle = CGRectMake(center.x - radius,
-                               center.y - radius,
+    CGRect circle = CGRectMake(self.center.x - radius,
+                               self.center.y - radius,
                                2 * radius,
                                2 * radius);
     
     CGContextAddEllipseInRect(context, circle);
     CGContextStrokePath(context);
-}
-
-- (void)drawSmallCircle
-{
-    [self drawCircleWithRadius:self.innerCircleRadius];
+    
+    return circle;
 }
 
 - (void)addAnimationDotView
@@ -99,7 +96,7 @@ static CGFloat const kDefaultInnerCircleRadius = 25.0f;
 
 - (void)addRedeemImageAtCenter
 {
-    CGFloat radius = _innerCircleRadius ?: kDefaultInnerCircleRadius;
+    CGFloat radius = self.innerCircleRadius;
     
     UIImage *image = [UIImage imageNamed:@"icone_erro"];
     _imageView = [[UIImageView alloc] initWithImage:image];
