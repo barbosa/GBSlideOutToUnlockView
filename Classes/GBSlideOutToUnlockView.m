@@ -98,7 +98,8 @@ static CGFloat const kDefaultInnerCircleRadius = 25.0f;
 {
     CGFloat radius = self.innerCircleRadius;
     
-    UIImage *image = [UIImage imageNamed:@"icone_erro"];
+    UIImage *image = _draggableImage ?: [UIImage imageNamed:@"drag_button"];
+    
     _imageView = [[UIImageView alloc] initWithImage:image];
     _imageView.userInteractionEnabled = YES;
     _imageView.backgroundColor = self.tintColor;

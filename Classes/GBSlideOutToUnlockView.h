@@ -28,6 +28,8 @@
 @property (nonatomic, assign) CGFloat innerCircleRadius;
 @property (nonatomic, assign) CGFloat outerCircleRadius;
 
+@property (nonatomic, strong) UIImage *draggableImage;
+
 - (void)startAnimating;
 - (void)stopAnimating;
 
