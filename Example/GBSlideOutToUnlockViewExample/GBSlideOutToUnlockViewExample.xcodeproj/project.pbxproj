@@ -22,6 +22,8 @@
 		154BBA1718FF304A00DB87A9 /* GBSlideOutToUnlockViewExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 154BBA1618FF304A00DB87A9 /* GBSlideOutToUnlockViewExampleTests.m */; };
 		154BBA2218FF32EE00DB87A9 /* GBSlideOutToUnlockView.m in Sources */ = {isa = PBXBuildFile; fileRef = 154BBA2118FF32EE00DB87A9 /* GBSlideOutToUnlockView.m */; };
 		154BBA2618FF330E00DB87A9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 154BBA2518FF330E00DB87A9 /* ViewController.m */; };
+		1562CA1F190734AE00D633E8 /* drag_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1562CA1D190734AE00D633E8 /* drag_button.png */; };
+		1562CA20190734AE00D633E8 /* drag_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1562CA1E190734AE00D633E8 /* drag_button@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,8 @@
 		154BBA2118FF32EE00DB87A9 /* GBSlideOutToUnlockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBSlideOutToUnlockView.m; path = ../../../Classes/GBSlideOutToUnlockView.m; sourceTree = "<group>"; };
 		154BBA2418FF330E00DB87A9 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		154BBA2518FF330E00DB87A9 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		1562CA1D190734AE00D633E8 /* drag_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drag_button.png; sourceTree = "<group>"; };
+		1562CA1E190734AE00D633E8 /* drag_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "drag_button@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +119,7 @@
 		154BB9F718FF304A00DB87A9 /* GBSlideOutToUnlockViewExample */ = {
 			isa = PBXGroup;
 			children = (
+				1562CA1C190734AE00D633E8 /* Assets */,
 				154BBA2318FF32F800DB87A9 /* Source */,
 				154BBA0018FF304A00DB87A9 /* AppDelegate.h */,
 				154BBA0118FF304A00DB87A9 /* AppDelegate.m */,
@@ -163,6 +168,16 @@
 				154BBA2118FF32EE00DB87A9 /* GBSlideOutToUnlockView.m */,
 			);
 			name = Source;
+			sourceTree = "<group>";
+		};
+		1562CA1C190734AE00D633E8 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				1562CA1D190734AE00D633E8 /* drag_button.png */,
+				1562CA1E190734AE00D633E8 /* drag_button@2x.png */,
+			);
+			name = Assets;
+			path = ../../../Assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,8 +256,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				154BB9FC18FF304A00DB87A9 /* InfoPlist.strings in Resources */,
+				1562CA20190734AE00D633E8 /* drag_button@2x.png in Resources */,
 				150B6E3A1905707900FFC06D /* ViewController.xib in Resources */,
 				154BBA0418FF304A00DB87A9 /* Images.xcassets in Resources */,
+				1562CA1F190734AE00D633E8 /* drag_button.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

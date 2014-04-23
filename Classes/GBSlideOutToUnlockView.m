@@ -61,7 +61,6 @@ static CGFloat const kDefaultInnerCircleRadius = 25.0f;
     outerCircleRect = [self drawCircleWithRadius:self.outerCircleRadius];
     innerCircleRect = [self drawCircleWithRadius:self.innerCircleRadius];
     
-    [self addAnimationDotView];
     [self addRedeemImageAtCenter];
     [self addPanGestureRecognizerToImage];
 }
@@ -81,17 +80,6 @@ static CGFloat const kDefaultInnerCircleRadius = 25.0f;
     CGContextStrokePath(context);
     
     return circle;
-}
-
-- (void)addAnimationDotView
-{
-    CGFloat size = 10.0f;
-    _animationDotView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, size, size)];
-    _animationDotView.backgroundColor = self.tintColor;
-    _animationDotView.layer.cornerRadius = size / 2;
-    [self addSubview:_animationDotView];
-    
-    _animationDotView.center = CGPointMake(self.center.x, self.center.y - self.outerCircleRadius);
 }
 
 - (void)addRedeemImageAtCenter
@@ -145,31 +133,6 @@ static CGFloat const kDefaultInnerCircleRadius = 25.0f;
             _imageView.center = self.center;
         }];
     }
-}
-
-- (void)startAnimating
-{
-    CAKeyframeAnimation *circlePathAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
-    circlePathAnimation.duration = 2.0f;
-    circlePathAnimation.removedOnCompletion = NO;
-    circlePathAnimation.calculationMode = kCAAnimationCubic;
-    circlePathAnimation.repeatCount = INFINITY;
-    
-    CGMutablePathRef circularPath = CGPathCreateMutable();
-    CGRect pathRect = CGRectMake(self.center.x - self.outerCircleRadius,
-                                 self.center.y - self.outerCircleRadius,
-                                 2 * self.outerCircleRadius,
-                                 2 * self.outerCircleRadius);
-    CGPathAddEllipseInRect(circularPath, NULL, pathRect);
-    circlePathAnimation.path = circularPath;
-    CGPathRelease(circularPath);
-    
-    [_animationDotView.layer addAnimation:circlePathAnimation forKey:nil];
-}
-
-- (void)stopAnimating
-{
-    [_animationDotView.layer removeAllAnimations];
 }
 
 @end

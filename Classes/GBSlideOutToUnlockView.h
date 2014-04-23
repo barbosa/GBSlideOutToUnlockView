@@ -30,7 +30,4 @@
 
 @property (nonatomic, strong) UIImage *draggableImage;
 
-- (void)startAnimating;
-- (void)stopAnimating;
-
 @end
