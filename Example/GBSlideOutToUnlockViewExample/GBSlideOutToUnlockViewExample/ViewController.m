@@ -37,14 +37,14 @@
     currentStateLabel.text = @"Started";
 }
 
-- (void)slideOutToUnlockViewDidEndToDrag:(GBSlideOutToUnlockView *)slideOutToUnlockView
-{
-    currentStateLabel.text = @"Did not unlock";
-}
-
 - (void)slideOutToUnlockViewDidUnlock:(GBSlideOutToUnlockView *)slideOutToUnlockView
 {
     currentStateLabel.text = @"Unlocked";
+}
+
+- (void)slideOutToUnlockViewDidNotUnlock:(GBSlideOutToUnlockView *)slideOutToUnlockView
+{
+    currentStateLabel.text = @"Did not unlock";
 }
 
 @end
