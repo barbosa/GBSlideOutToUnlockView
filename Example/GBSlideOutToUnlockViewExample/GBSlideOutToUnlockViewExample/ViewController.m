@@ -34,17 +34,17 @@
 
 - (void)slideOutToUnlockViewDidStartToDrag:(GBSlideOutToUnlockView *)slideOutToUnlockView
 {
-    NSLog(@"did start");
+    currentStateLabel.text = @"Started";
 }
 
 - (void)slideOutToUnlockViewDidEndToDrag:(GBSlideOutToUnlockView *)slideOutToUnlockView
 {
-    NSLog(@"did end");
+    currentStateLabel.text = @"Did not unlock";
 }
 
 - (void)slideOutToUnlockViewDidUnlock:(GBSlideOutToUnlockView *)slideOutToUnlockView
 {
-    NSLog(@"Did unlock");
+    currentStateLabel.text = @"Unlocked";
 }
 
 @end
