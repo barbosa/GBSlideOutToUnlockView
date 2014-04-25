@@ -9,6 +9,8 @@
 #import "ViewController.h"
 #import "GBSlideOutToUnlockView.h"
 
+static CGFloat const kHorizontalMargin = 20.0f;
+
 @interface ViewController ()<GBSlideOutToUnlockViewDelegate>
 {
     __weak IBOutlet UIView *containerView;
@@ -25,7 +27,7 @@
     
     slideToUnlockView = [[GBSlideOutToUnlockView alloc] initWithFrame:containerView.bounds];
     slideToUnlockView.delegate = self;
-    slideToUnlockView.outerCircleRadius = CGRectGetWidth(containerView.bounds) / 2.0 - 2*20;
+    slideToUnlockView.outerCircleRadius = CGRectGetWidth(containerView.bounds) / 2.0f - 2*kHorizontalMargin;
     [containerView addSubview:slideToUnlockView];
 }
 
