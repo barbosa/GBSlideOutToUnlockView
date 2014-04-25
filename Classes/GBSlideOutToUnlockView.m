@@ -12,17 +12,15 @@
 
 
 static CGFloat const kDefaultInnerCircleRadius = 25.0f;
+static CGFloat const kDefaultOutterCircleRadius = 2 * kDefaultInnerCircleRadius;
 
 @interface GBSlideOutToUnlockView ()
 {
     BOOL _unlockOnRelease;
-    
-    CGRect outerCircleRect;
-    CGRect innerCircleRect;
 }
 
-@property (strong, nonatomic) UIImageView *imageView;
-@property (strong, nonatomic) UIView *animationDotView;
+@property (nonatomic, strong) UIButton *dragButton;
+@property (nonatomic, strong) UIView *animationDotView;
 
 @end
 
@@ -58,14 +56,14 @@ static CGFloat const kDefaultInnerCircleRadius = 25.0f;
 
 - (void)drawRect:(CGRect)rect
 {
-    outerCircleRect = [self drawCircleWithRadius:self.outerCircleRadius];
-    innerCircleRect = [self drawCircleWithRadius:self.innerCircleRadius];
+    [self drawCircleWithRadius:self.outerCircleRadius];
+    [self drawCircleWithRadius:self.innerCircleRadius];
     
     [self addRedeemImageAtCenter];
     [self addPanGestureRecognizerToImage];
 }
 
-- (CGRect)drawCircleWithRadius:(CGFloat)radius
+- (void)drawCircleWithRadius:(CGFloat)radius
 {
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetLineWidth(context, 1.0);
@@ -78,35 +76,30 @@ static CGFloat const kDefaultInnerCircleRadius = 25.0f;
     
     CGContextAddEllipseInRect(context, circle);
     CGContextStrokePath(context);
-    
-    return circle;
 }
 
 - (void)addRedeemImageAtCenter
 {
-    CGFloat radius = self.innerCircleRadius;
+    _dragButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    _dragButton.frame = CGRectMake(0, 0, 2*self.innerCircleRadius, 2*self.innerCircleRadius);
+    _dragButton.backgroundColor = self.tintColor;
+    _dragButton.tintColor = [UIColor whiteColor];
+    _dragButton.layer.cornerRadius = self.innerCircleRadius;
+    _dragButton.clipsToBounds = YES;
     
     UIImage *image = _draggableImage ?: [UIImage imageNamed:@"drag_button"];
+    image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [_dragButton setImage:image forState:UIControlStateNormal];
     
-    _imageView = [[UIImageView alloc] initWithImage:image];
-    _imageView.userInteractionEnabled = YES;
-    _imageView.backgroundColor = self.tintColor;
-    _imageView.contentMode = UIViewContentModeCenter;
-    _imageView.layer.cornerRadius = radius;
-    _imageView.clipsToBounds = YES;
+    [self addSubview:_dragButton];
     
-    CGRect imageFrame = _imageView.frame;
-    imageFrame.size = CGSizeMake(2*radius, 2*radius);
-    _imageView.frame = imageFrame;
-    
-    [self addSubview:_imageView];
-    _imageView.center = self.center;
+    _dragButton.center = self.center;
 }
 
 - (void)addPanGestureRecognizerToImage
 {
     UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
-    [_imageView addGestureRecognizer:panGesture];
+    [_dragButton addGestureRecognizer:panGesture];
 }
 
 - (void)handlePan:(UIPanGestureRecognizer *)gestureRecognizer
@@ -119,9 +112,9 @@ static CGFloat const kDefaultInnerCircleRadius = 25.0f;
     
     if (gestureRecognizer.state == UIGestureRecognizerStateChanged) {
         CGPoint translation = [gestureRecognizer translationInView:self];
-        _imageView.center = CGPointMake(self.center.x + translation.x,
-                                        self.center.y + translation.y);
-        _unlockOnRelease = sqrt(pow(_imageView.center.x-self.center.x, 2) + pow(_imageView.center.y-self.center.y, 2)) > self.outerCircleRadius + self.innerCircleRadius;
+        _dragButton.center = CGPointMake(self.center.x + translation.x,
+                                         self.center.y + translation.y);
+        _unlockOnRelease = sqrt(pow(_dragButton.center.x-self.center.x, 2) + pow(_dragButton.center.y-self.center.y, 2)) > self.outerCircleRadius + self.innerCircleRadius;
     }
     
     if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
@@ -134,7 +127,7 @@ static CGFloat const kDefaultInnerCircleRadius = 25.0f;
         }
         
         [UIView animateWithDuration:0.2f animations:^{
-            _imageView.center = self.center;
+            _dragButton.center = self.center;
         }];
     }
 }
