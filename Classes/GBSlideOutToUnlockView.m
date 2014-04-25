@@ -88,7 +88,8 @@ static CGFloat const kDefaultOutterCircleRadius = 2 * kDefaultInnerCircleRadius;
     _dragButton.clipsToBounds = YES;
     
     UIImage *image = _draggableImage ?: [UIImage imageNamed:@"drag_button"];
-    image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    if ([image respondsToSelector:@selector(imageWithRenderingMode:)])
+        image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     [_dragButton setImage:image forState:UIControlStateNormal];
     
     [self addSubview:_dragButton];
