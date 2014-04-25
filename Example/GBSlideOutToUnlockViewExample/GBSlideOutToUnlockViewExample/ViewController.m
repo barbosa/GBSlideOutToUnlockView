@@ -25,7 +25,6 @@
     
     slideToUnlockView = [[GBSlideOutToUnlockView alloc] initWithFrame:containerView.bounds];
     slideToUnlockView.delegate = self;
-    slideToUnlockView.tintColor = [UIColor purpleColor];
     slideToUnlockView.outerCircleRadius = CGRectGetWidth(containerView.bounds) / 2.0 - 2*20;
     [containerView addSubview:slideToUnlockView];
 }

@@ -22,8 +22,14 @@
 @interface GBSlideOutToUnlockView : UIView
 
 @property (nonatomic, weak) id<GBSlideOutToUnlockViewDelegate> delegate;
+
 @property (nonatomic, assign) CGFloat innerCircleRadius;
 @property (nonatomic, assign) CGFloat outerCircleRadius;
+
+@property (nonatomic, strong) UIColor *innerCircleColor;
+@property (nonatomic, strong) UIColor *outerCircleColor;
+@property (nonatomic, strong) UIColor *draggableButtonBackgroundColor;
+@property (nonatomic, strong) UIColor *draggableImageTintColor;
 
 @property (nonatomic, strong) UIImage *draggableImage;
 
