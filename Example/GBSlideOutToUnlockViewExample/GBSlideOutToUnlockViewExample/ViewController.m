@@ -35,16 +35,19 @@ static CGFloat const kHorizontalMargin = 20.0f;
 - (void)slideOutToUnlockViewDidStartToDrag:(GBSlideOutToUnlockView *)slideOutToUnlockView
 {
     currentStateLabel.text = @"Started";
+    currentStateLabel.backgroundColor = [UIColor blackColor];
 }
 
 - (void)slideOutToUnlockViewDidUnlock:(GBSlideOutToUnlockView *)slideOutToUnlockView
 {
     currentStateLabel.text = @"Unlocked";
+    currentStateLabel.backgroundColor = [UIColor colorWithRed:0 green:0.7 blue:0 alpha:1];
 }
 
 - (void)slideOutToUnlockViewDidNotUnlock:(GBSlideOutToUnlockView *)slideOutToUnlockView
 {
     currentStateLabel.text = @"Did not unlock";
+    currentStateLabel.backgroundColor = [UIColor colorWithRed:0.7 green:0 blue:0 alpha:1];
 }
 
 @end
