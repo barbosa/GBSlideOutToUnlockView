@@ -1,6 +1,6 @@
 # GBSlideOutToUnlockView
 
-<!--
+
 [![Version](http://cocoapod-badges.herokuapp.com/v/GBSlideOutToUnlockView/badge.png)](http://cocoadocs.org/docsets/GBSlideOutToUnlockView)
 [![Platform](http://cocoapod-badges.herokuapp.com/p/GBSlideOutToUnlockView/badge.png)](http://cocoadocs.org/docsets/GBSlideOutToUnlockView)
 
@@ -17,14 +17,49 @@ But if you don't use CocoaPods, you can just copy the `Classes` folder into your
 
 ## Screenshots
 
-![Component example](https://raw.github.com/barbosa/GBSlideOutToUnlockView/master/screenshot.png)
+![Component example](https://raw.github.com/barbosa/GBSlideOutToUnlockView/master/screenshot.gif)
 
 ## Usage
 
+To create a **slide to unlock** component programmatically, just instantiate a new `GBSlideOutToUnlockView` with a frame and add it to some view, for example:
+
+```objc
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    GBSlideOutToUnlockView *slideToUnlockView = [[GBSlideOutToUnlockView alloc] initWithFrame:containerView.bounds];
+    slideToUnlockView.delegate = self;
+    [containerView addSubview:slideToUnlockView];
+}
+```
+
+And then, implement its protocol to handle its events:
+
+```objc
+@protocol GBSlideOutToUnlockViewDelegate <NSObject>
+@optional
+- (void)slideOutToUnlockViewDidStartToDrag:(GBSlideOutToUnlockView *)slideOutToUnlockView;
+- (void)slideOutToUnlockViewDidUnlock:(GBSlideOutToUnlockView *)slideOutToUnlockView;
+- (void)slideOutToUnlockViewDidNotUnlock:(GBSlideOutToUnlockView *)slideOutToUnlockView;
+@end
+```
+
+You can easily customize your instance of `GBSlideOutToUnlockView` using the properties below
+
 ```objc
 
+@property (nonatomic, assign) CGFloat innerCircleRadius;
+@property (nonatomic, assign) CGFloat outerCircleRadius;
+
+@property (nonatomic, strong) UIColor *innerCircleColor;
+@property (nonatomic, strong) UIColor *outerCircleColor;
+
+@property (nonatomic, strong) UIColor *draggableButtonBackgroundColor;
+@property (nonatomic, strong) UIColor *draggableImageTintColor;
+
+@property (nonatomic, strong) UIImage *draggableImage;
 ```
--->
 
 ## Author
 
