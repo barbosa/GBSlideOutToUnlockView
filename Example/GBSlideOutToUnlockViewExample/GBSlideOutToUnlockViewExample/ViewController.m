@@ -15,7 +15,6 @@ static CGFloat const kHorizontalMargin = 20.0f;
 {
     __weak IBOutlet UIView *containerView;
     __weak IBOutlet UILabel *currentStateLabel;
-    GBSlideOutToUnlockView *slideToUnlockView;
 }
 @end
 
@@ -25,7 +24,7 @@ static CGFloat const kHorizontalMargin = 20.0f;
 {
     [super viewDidLoad];
     
-    slideToUnlockView = [[GBSlideOutToUnlockView alloc] initWithFrame:containerView.bounds];
+    GBSlideOutToUnlockView *slideToUnlockView = [[GBSlideOutToUnlockView alloc] initWithFrame:containerView.bounds];
     slideToUnlockView.delegate = self;
     slideToUnlockView.outerCircleRadius = CGRectGetWidth(containerView.bounds) / 2.0f - 2*kHorizontalMargin;
     [containerView addSubview:slideToUnlockView];
