@@ -16,6 +16,7 @@ static CGFloat const kDefaultInnerCircleRadius = 25.0f;
 @interface GBSlideOutToUnlockView ()
 {
     BOOL _unlockOnRelease;
+    CGFloat _distanceMoved;
 }
 
 @property (nonatomic, strong) UIButton *dragButton;
@@ -129,6 +130,7 @@ static CGFloat const kDefaultInnerCircleRadius = 25.0f;
 - (void)handlePan:(UIPanGestureRecognizer *)gestureRecognizer
 {
     if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
+        _distanceMoved = 0.0f;
         if ([_delegate respondsToSelector:@selector(slideOutToUnlockViewDidStartToDrag:)]) {
             [_delegate slideOutToUnlockViewDidStartToDrag:self];
         }
@@ -138,7 +140,12 @@ static CGFloat const kDefaultInnerCircleRadius = 25.0f;
         CGPoint translation = [gestureRecognizer translationInView:self];
         _dragButton.center = CGPointMake(self.center.x + translation.x,
                                          self.center.y + translation.y);
-        _unlockOnRelease = sqrt(pow(_dragButton.center.x-self.center.x, 2) + pow(_dragButton.center.y-self.center.y, 2)) > self.outerCircleRadius + self.innerCircleRadius;
+        _distanceMoved = sqrt(pow(_dragButton.center.x-self.center.x, 2) + pow(_dragButton.center.y-self.center.y, 2));
+        
+        if ([self.delegate respondsToSelector:@selector(slideOutToUnlockView:didDragDistance:)])
+            [self.delegate slideOutToUnlockView:self didDragDistance:_distanceMoved];
+        
+        _unlockOnRelease = _distanceMoved > self.outerCircleRadius + self.innerCircleRadius;
     }
     
     if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {

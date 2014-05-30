@@ -48,6 +48,14 @@
  */
 - (void)slideOutToUnlockViewDidNotUnlock:(GBSlideOutToUnlockView *)slideOutToUnlockView;
 
+/**
+ *  Tells the delegate that the component's draggable image has moved some distance.
+ *
+ *  @param slideOutView The slideOutToUnlockView object being dragged.
+ *  @param distance     Total distance between the componet's center point and the current point.
+ */
+- (void)slideOutToUnlockView:(GBSlideOutToUnlockView *)slideOutView didDragDistance:(CGFloat)distance;
+
 @end
 
 
