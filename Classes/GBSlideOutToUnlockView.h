@@ -10,6 +10,8 @@
 
 @class GBSlideOutToUnlockView;
 
+#pragma mark - Protocol
+
 /**
  *  The delegate of a GBSlideOutToUnlockView must adopt the GBSlideOutToUnlockViewDelegate protocol.
  *  Optional methods of the protocol allow the delegate to handle events for given states.
@@ -26,6 +28,13 @@
 - (void)slideOutToUnlockViewDidStartToDrag:(GBSlideOutToUnlockView *)slideOutToUnlockView;
 
 /**
+ *  Tells the delegate that the slideOutToUnlockView object did end to drag.
+ *
+ *  @param slideOutToUnlockView The slideOutToUnlockView object that ended the drag.
+ */
+- (void)slideOutToUnlockViewDidEndToDrag:(GBSlideOutToUnlockView *)slideOutToUnlockView;
+
+/**
  *  Tells the delegate that the slideOutToUnlockView object did unlock successfully.
  *
  *  @param slideOutToUnlockView The slideOutToUnlockView object that did unlock.
@@ -33,7 +42,7 @@
 - (void)slideOutToUnlockViewDidUnlock:(GBSlideOutToUnlockView *)slideOutToUnlockView;
 
 /**
- *  Tells de delegate that the slideOutToUnlockView object did fail to unlock.
+ *  Tells the delegate that the slideOutToUnlockView object did fail to unlock.
  *
  *  @param slideOutToUnlockView The slideOutToUnlockView object that fails to unlock.
  */
@@ -41,6 +50,8 @@
 
 @end
 
+
+#pragma mark - Interface
 
 /**
  *  GBSlideOutToUnlockView offers a very simple way to perform an unlock action

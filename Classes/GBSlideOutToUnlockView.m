@@ -142,6 +142,10 @@ static CGFloat const kDefaultInnerCircleRadius = 25.0f;
     }
     
     if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
+        
+        if ([self.delegate respondsToSelector:@selector(slideOutToUnlockViewDidEndToDrag:)])
+            [self.delegate slideOutToUnlockViewDidEndToDrag:self];
+        
         if (_unlockOnRelease) {
             if ([self.delegate respondsToSelector:@selector(slideOutToUnlockViewDidUnlock:)])
                 [self.delegate slideOutToUnlockViewDidUnlock:self];
