@@ -40,8 +40,10 @@ And then, implement its protocol to handle its events:
 @protocol GBSlideOutToUnlockViewDelegate <NSObject>
 @optional
 - (void)slideOutToUnlockViewDidStartToDrag:(GBSlideOutToUnlockView *)slideOutToUnlockView;
+- (void)slideOutToUnlockViewDidEndToDrag:(GBSlideOutToUnlockView *)slideOutToUnlockView;
 - (void)slideOutToUnlockViewDidUnlock:(GBSlideOutToUnlockView *)slideOutToUnlockView;
 - (void)slideOutToUnlockViewDidNotUnlock:(GBSlideOutToUnlockView *)slideOutToUnlockView;
+- (void)slideOutToUnlockView:(GBSlideOutToUnlockView *)slideOutView didDragDistance:(CGFloat)distance;
 @end
 ```
 
