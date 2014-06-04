@@ -19,6 +19,8 @@ But if you don't use CocoaPods, you can just copy the `Classes` folder into your
 
 ![Component example](https://raw.github.com/barbosa/GBSlideOutToUnlockView/master/screenshot.gif)
 
+*Note: The "Unlocked/did not unlock" label is presented only in the Example project. It is not contained inside the component.*
+
 ## Usage
 
 To create a **slide to unlock** component programmatically, just instantiate a new `GBSlideOutToUnlockView` with a frame and add it to some view, for example:
