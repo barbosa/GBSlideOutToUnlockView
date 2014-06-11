@@ -1,0 +1,14 @@
+PODS:
+  - GBSlideOutToUnlockView (1.1.0)
+
+DEPENDENCIES:
+  - GBSlideOutToUnlockView (from `../`)
+
+EXTERNAL SOURCES:
+  GBSlideOutToUnlockView:
+    :path: ../
+
+SPEC CHECKSUMS:
+  GBSlideOutToUnlockView: 0582ce2a6abb55e8d491517621f9055bc5f661eb
+
+COCOAPODS: 0.33.1
