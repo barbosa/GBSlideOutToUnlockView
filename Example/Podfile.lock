@@ -9,6 +9,6 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  GBSlideOutToUnlockView: 0582ce2a6abb55e8d491517621f9055bc5f661eb
+  GBSlideOutToUnlockView: 15ac68f356d1785c19daf703d904df56b174b27f
 
 COCOAPODS: 0.33.1
