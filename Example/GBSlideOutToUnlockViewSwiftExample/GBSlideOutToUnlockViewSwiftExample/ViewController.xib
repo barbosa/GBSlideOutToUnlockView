@@ -18,7 +18,6 @@
             <subviews>
                 <view appearanceType="aqua" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bbe-YQ-KfU">
                     <rect key="frame" x="0.0" y="124" width="320" height="320"/>
-                    <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="320" id="PtY-nM-Z5J"/>
                         <constraint firstAttribute="width" constant="320" id="vxQ-Mp-cmP"/>

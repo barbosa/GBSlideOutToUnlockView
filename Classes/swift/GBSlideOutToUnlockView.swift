@@ -40,7 +40,7 @@ class GBSlideOutToUnlockView: UIView {
         self.innerCircleColor = self.tintColor
         self.outerCircleColor = self.tintColor
         self.draggableButtonBackgroundColor = self.tintColor
-        self.draggableImageTintColor = self.tintColor
+        self.draggableImageTintColor = UIColor.whiteColor()
     }
     
     override func drawRect(rect: CGRect) {

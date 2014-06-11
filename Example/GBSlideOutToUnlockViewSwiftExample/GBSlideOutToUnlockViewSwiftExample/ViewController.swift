@@ -18,6 +18,7 @@ class ViewController: UIViewController, GBSlideOutToUnlockViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         var slideToUnlockView = GBSlideOutToUnlockView(frame: containerView.bounds)
+        slideToUnlockView.tintColor = UIColor.redColor()
         slideToUnlockView.delegate = self
         containerView.addSubview(slideToUnlockView)
         slideToUnlockView.outerCircleRadius = CGRectGetWidth(containerView.bounds) / CGFloat(2.0) - CGFloat(2.0)*CGFloat(kHorizontalMargin)
