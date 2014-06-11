@@ -10,6 +10,11 @@
 		15B0C9021948C77C00A2F399 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B0C9011948C77C00A2F399 /* AppDelegate.swift */; };
 		15B0C9041948C77C00A2F399 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15B0C9031948C77C00A2F399 /* Images.xcassets */; };
 		15B0C9101948C77C00A2F399 /* GBSlideOutToUnlockViewSwiftExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B0C90F1948C77C00A2F399 /* GBSlideOutToUnlockViewSwiftExampleTests.swift */; };
+		15B0C92F1948E1F700A2F399 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B0C92E1948E1F700A2F399 /* ViewController.swift */; };
+		15B0C9311948E25C00A2F399 /* GBSlideOutToUnlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B0C9301948E25C00A2F399 /* GBSlideOutToUnlockView.swift */; };
+		15B0C9351948E28900A2F399 /* drag_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 15B0C9331948E28900A2F399 /* drag_button.png */; };
+		15B0C9361948E28900A2F399 /* drag_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 15B0C9341948E28900A2F399 /* drag_button@2x.png */; };
+		15B0C93819490BAF00A2F399 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15B0C93719490BAF00A2F399 /* ViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,6 +35,11 @@
 		15B0C9091948C77C00A2F399 /* GBSlideOutToUnlockViewSwiftExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GBSlideOutToUnlockViewSwiftExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		15B0C90E1948C77C00A2F399 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15B0C90F1948C77C00A2F399 /* GBSlideOutToUnlockViewSwiftExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GBSlideOutToUnlockViewSwiftExampleTests.swift; sourceTree = "<group>"; };
+		15B0C92E1948E1F700A2F399 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		15B0C9301948E25C00A2F399 /* GBSlideOutToUnlockView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GBSlideOutToUnlockView.swift; path = ../../../Classes/swift/GBSlideOutToUnlockView.swift; sourceTree = "<group>"; };
+		15B0C9331948E28900A2F399 /* drag_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = drag_button.png; path = ../../../Assets/drag_button.png; sourceTree = "<group>"; };
+		15B0C9341948E28900A2F399 /* drag_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "drag_button@2x.png"; path = "../../../Assets/drag_button@2x.png"; sourceTree = "<group>"; };
+		15B0C93719490BAF00A2F399 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,9 +81,13 @@
 		15B0C8FE1948C77C00A2F399 /* GBSlideOutToUnlockViewSwiftExample */ = {
 			isa = PBXGroup;
 			children = (
+				15B0C9321948E26000A2F399 /* Assets */,
+				15B0C92D1948E11C00A2F399 /* Source */,
 				15B0C9011948C77C00A2F399 /* AppDelegate.swift */,
 				15B0C9031948C77C00A2F399 /* Images.xcassets */,
 				15B0C8FF1948C77C00A2F399 /* Supporting Files */,
+				15B0C92E1948E1F700A2F399 /* ViewController.swift */,
+				15B0C93719490BAF00A2F399 /* ViewController.xib */,
 			);
 			path = GBSlideOutToUnlockViewSwiftExample;
 			sourceTree = "<group>";
@@ -101,6 +115,23 @@
 				15B0C90E1948C77C00A2F399 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		15B0C92D1948E11C00A2F399 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				15B0C9301948E25C00A2F399 /* GBSlideOutToUnlockView.swift */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		15B0C9321948E26000A2F399 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				15B0C9331948E28900A2F399 /* drag_button.png */,
+				15B0C9341948E28900A2F399 /* drag_button@2x.png */,
+			);
+			name = Assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,6 +214,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				15B0C9041948C77C00A2F399 /* Images.xcassets in Resources */,
+				15B0C9361948E28900A2F399 /* drag_button@2x.png in Resources */,
+				15B0C93819490BAF00A2F399 /* ViewController.xib in Resources */,
+				15B0C9351948E28900A2F399 /* drag_button.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,6 +234,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15B0C9311948E25C00A2F399 /* GBSlideOutToUnlockView.swift in Sources */,
+				15B0C92F1948E1F700A2F399 /* ViewController.swift in Sources */,
 				15B0C9021948C77C00A2F399 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
