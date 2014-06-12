@@ -66,11 +66,14 @@ class GBSlideOutToUnlockView: UIView {
         _dragButton.layer.cornerRadius = self.innerCircleRadius
         _dragButton.layer.masksToBounds = true
         
-        if let image = self.draggableImage {
-            _dragButton.setImage(image.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+        var templateImage: UIImage?
+        if let rawImage = self.draggableImage {
+            templateImage = rawImage.imageWithRenderingMode(.AlwaysTemplate)
         } else {
-            _dragButton.setImage(UIImage(named: "drag_button"), forState: .Normal)
+            templateImage = UIImage(named: "drag_button").imageWithRenderingMode(.AlwaysTemplate)
         }
+        
+        _dragButton.setImage(templateImage!, forState: .Normal)
         
         self.addSubview(_dragButton)
         _dragButton.center = self.center
