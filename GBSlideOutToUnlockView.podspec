@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "GBSlideOutToUnlockView"
-  s.version          = "1.1.0"
+  s.version          = "1.2.0"
   s.summary          = 'An "Inside-2-Outside Slide to Unlock" component for iOS'
   s.screenshots      = "https://raw.github.com/barbosa/GBSlideOutToUnlockView/master/screenshot.gif"
   s.homepage         = "https://github.com/barbosa/GBSlideOutToUnlockView"
