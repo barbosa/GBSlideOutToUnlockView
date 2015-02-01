@@ -9,19 +9,19 @@
 import UIKit
 
 @objc protocol GBSlideOutToUnlockViewDelegate {
-    @optional func slideOutToUnlockViewDidStartToDrag(slideOutToUnlockView: GBSlideOutToUnlockView)
-    @optional func slideOutToUnlockViewDidEndToDrag(slideOutToUnlockView: GBSlideOutToUnlockView)
-    @optional func slideOutToUnlockViewDidUnlock(slideOutToUnlockView: GBSlideOutToUnlockView)
-    @optional func slideOutToUnlockViewDidNotUnlock(slideOutToUnlockView: GBSlideOutToUnlockView)
-    @optional func slideOutToUnlockViewDidDragDistance(slideOutToUnlockView: GBSlideOutToUnlockView, draggedDistance: Float)
+    optional func slideOutToUnlockViewDidStartToDrag(slideOutToUnlockView: GBSlideOutToUnlockView)
+    optional func slideOutToUnlockViewDidEndToDrag(slideOutToUnlockView: GBSlideOutToUnlockView)
+    optional func slideOutToUnlockViewDidUnlock(slideOutToUnlockView: GBSlideOutToUnlockView)
+    optional func slideOutToUnlockViewDidNotUnlock(slideOutToUnlockView: GBSlideOutToUnlockView)
+    optional func slideOutToUnlockViewDidDragDistance(slideOutToUnlockView: GBSlideOutToUnlockView, draggedDistance: CGFloat)
 }
 
 class GBSlideOutToUnlockView: UIView {
     
     weak var delegate: GBSlideOutToUnlockViewDelegate?
     
-    var innerCircleRadius: Float = 25.0
-    var outerCircleRadius: Float = 50.0
+    var innerCircleRadius: CGFloat = 25.0
+    var outerCircleRadius: CGFloat = 50.0
     
     var innerCircleColor: UIColor?
     var outerCircleColor: UIColor?
@@ -32,10 +32,19 @@ class GBSlideOutToUnlockView: UIView {
     
     var _dragButton: UIButton!
     var _unlockOnRelease: Bool = false
-    var _distanceMoved: Float = 0.0
+    var _distanceMoved: CGFloat = 0.0
     
-    init(frame: CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
+        setup()
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
+
+    func setup() {
         self.backgroundColor = UIColor.clearColor()
         self.innerCircleColor = self.tintColor
         self.outerCircleColor = self.tintColor
@@ -50,7 +59,7 @@ class GBSlideOutToUnlockView: UIView {
         addPanGestureRecognizerToImage()
     }
     
-    func drawCircleWithRadius(radius: Float, color: UIColor!) {
+    func drawCircleWithRadius(radius: CGFloat, color: UIColor!) {
         let context: CGContextRef = UIGraphicsGetCurrentContext()
         CGContextSetLineWidth(context, 1.0)
         CGContextSetStrokeColorWithColor(context, color.CGColor)
@@ -60,7 +69,7 @@ class GBSlideOutToUnlockView: UIView {
     }
     
     func addRedeemImageAtCenter() {
-        _dragButton = UIButton(frame: CGRect(x: 0, y: 0, width: 2*self.innerCircleRadius, height: 2*self.innerCircleRadius))
+        _dragButton = UIButton(frame: CGRectMake(0, 0, 2 * self.innerCircleRadius, 2 * self.innerCircleRadius))
         _dragButton.backgroundColor = self.draggableButtonBackgroundColor
         _dragButton.tintColor = self.draggableImageTintColor
         _dragButton.layer.cornerRadius = self.innerCircleRadius
@@ -70,7 +79,7 @@ class GBSlideOutToUnlockView: UIView {
         if let rawImage = self.draggableImage {
             templateImage = rawImage.imageWithRenderingMode(.AlwaysTemplate)
         } else {
-            templateImage = UIImage(named: "drag_button").imageWithRenderingMode(.AlwaysTemplate)
+            templateImage = UIImage(named: "drag_button")?.imageWithRenderingMode(.AlwaysTemplate)
         }
         
         _dragButton.setImage(templateImage!, forState: .Normal)
@@ -96,7 +105,7 @@ class GBSlideOutToUnlockView: UIView {
             
             let a = _dragButton.center.x - self.center.x
             let b = _dragButton.center.y - self.center.y
-            _distanceMoved = sqrtf(powf(a, 2.0) + powf(b, 2.0))
+            _distanceMoved = sqrt(pow(a, 2.0) + pow(b, 2.0))
             delegate?.slideOutToUnlockViewDidDragDistance?(self, draggedDistance: _distanceMoved)
             
             _unlockOnRelease = _distanceMoved > outerCircleRadius + innerCircleRadius

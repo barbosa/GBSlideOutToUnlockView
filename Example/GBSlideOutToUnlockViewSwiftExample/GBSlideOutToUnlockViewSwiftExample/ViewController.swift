@@ -12,9 +12,9 @@ class ViewController: UIViewController, GBSlideOutToUnlockViewDelegate {
     
     let kHorizontalMargin = 20.0
 
-    @IBOutlet var containerView: UIView
-    @IBOutlet var currentStateLabel: UILabel
-    
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var currentStateLabel: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         var slideToUnlockView = GBSlideOutToUnlockView(frame: containerView.bounds)
