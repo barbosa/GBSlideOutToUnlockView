@@ -7,9 +7,9 @@
 //
 
 #import <XCTest/XCTest.h>
+#import <KIF/KIF.h>
 
 @interface GBSlideOutToUnlockViewExampleTests : XCTestCase
-
 @end
 
 @implementation GBSlideOutToUnlockViewExampleTests
@@ -17,18 +17,16 @@
 - (void)setUp
 {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
 }
 
 - (void)tearDown
 {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
 }
 
-- (void)testExample
+- (void)testSample
 {
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+    XCTAssert(YES);
 }
 
 @end

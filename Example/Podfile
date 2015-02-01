@@ -1,2 +1,5 @@
 pod "GBSlideOutToUnlockView", :path => "../"
 
+target 'GBSlideOutToUnlockViewExampleTests', :exclusive => true do
+  pod 'KIF', '~> 3.0'
+end

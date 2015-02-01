@@ -1,14 +1,19 @@
 PODS:
-  - GBSlideOutToUnlockView (1.1.0)
+  - GBSlideOutToUnlockView (1.2.0)
+  - KIF (3.1.2):
+    - KIF/XCTest (= 3.1.2)
+  - KIF/XCTest (3.1.2)
 
 DEPENDENCIES:
   - GBSlideOutToUnlockView (from `../`)
+  - KIF (~> 3.0)
 
 EXTERNAL SOURCES:
   GBSlideOutToUnlockView:
     :path: ../
 
 SPEC CHECKSUMS:
-  GBSlideOutToUnlockView: 15ac68f356d1785c19daf703d904df56b174b27f
+  GBSlideOutToUnlockView: 0206a8e77ca7bf0cd586077234395b55d4f565ff
+  KIF: 068074b24dd455025e7f2a488ba4fb07b9ce047b
 
-COCOAPODS: 0.33.1
+COCOAPODS: 0.35.0
