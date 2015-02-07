@@ -10,6 +10,20 @@
 	<string>46</string>
 	<key>objects</key>
 	<dict>
+		<key>0EC55348F8E9B765BE3E0BF1</key>
+		<dict>
+			<key>fileRef</key>
+			<string>A9FD5ED58C4DC63381731395</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Weak</string>
+				</array>
+			</dict>
+		</dict>
 		<key>150B6E391905707900FFC06D</key>
 		<dict>
 			<key>fileEncoding</key>
@@ -130,7 +144,7 @@
 				<string>154BB9F418FF304A00DB87A9</string>
 				<string>154BB9F618FF304A00DB87A9</string>
 				<string>154BB9F218FF304A00DB87A9</string>
-				<string>B7415F9A94AF4939A0900F26</string>
+				<string>0EC55348F8E9B765BE3E0BF1</string>
 			</array>
 			<key>isa</key>
 			<string>PBXFrameworksBuildPhase</string>
@@ -163,6 +177,7 @@
 				<string>154BB9EB18FF304A00DB87A9</string>
 				<string>154BB9EC18FF304A00DB87A9</string>
 				<string>9EF245DC9475437D8134F726</string>
+				<string>2D62D18F809E674003DB6712</string>
 			</array>
 			<key>buildRules</key>
 			<array/>
@@ -214,8 +229,8 @@
 				<string>154BB9F318FF304A00DB87A9</string>
 				<string>154BB9F518FF304A00DB87A9</string>
 				<string>154BBA0A18FF304A00DB87A9</string>
-				<string>E2DE70F8BCF94BA483D0D3AC</string>
-				<string>3C77353C1D1AC2397DD0BC6E</string>
+				<string>A9FD5ED58C4DC63381731395</string>
+				<string>20C309259ECFE65064F8DF96</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
@@ -461,7 +476,7 @@
 				<string>154BBA0B18FF304A00DB87A9</string>
 				<string>154BBA0D18FF304A00DB87A9</string>
 				<string>154BBA0C18FF304A00DB87A9</string>
-				<string>56E6985D0EBFA8837425CEF6</string>
+				<string>DE5BBA36147EE493D03A0CFF</string>
 			</array>
 			<key>isa</key>
 			<string>PBXFrameworksBuildPhase</string>
@@ -492,6 +507,7 @@
 				<string>154BBA0618FF304A00DB87A9</string>
 				<string>154BBA0718FF304A00DB87A9</string>
 				<string>547BC075F71DFB411770DFF6</string>
+				<string>55D59B0BB96D489D015C9EA6</string>
 			</array>
 			<key>buildRules</key>
 			<array/>
@@ -988,18 +1004,42 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>3C77353C1D1AC2397DD0BC6E</key>
+		<key>20C309259ECFE65064F8DF96</key>
 		<dict>
 			<key>explicitFileType</key>
-			<string>archive.ar</string>
+			<string>wrapper.framework</string>
 			<key>includeInIndex</key>
 			<string>0</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>path</key>
-			<string>libPods-GBSlideOutToUnlockViewExampleTests.a</string>
+			<string>Pods_GBSlideOutToUnlockViewExampleTests.framework</string>
 			<key>sourceTree</key>
 			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>2D62D18F809E674003DB6712</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>Embed Pods Frameworks</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
 		</dict>
 		<key>547BC075F71DFB411770DFF6</key>
 		<dict>
@@ -1025,12 +1065,29 @@
 			<key>showEnvVarsInLog</key>
 			<string>0</string>
 		</dict>
-		<key>56E6985D0EBFA8837425CEF6</key>
+		<key>55D59B0BB96D489D015C9EA6</key>
 		<dict>
-			<key>fileRef</key>
-			<string>3C77353C1D1AC2397DD0BC6E</string>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
 			<key>isa</key>
-			<string>PBXBuildFile</string>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>Embed Pods Frameworks</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods-GBSlideOutToUnlockViewExampleTests/Pods-GBSlideOutToUnlockViewExampleTests-frameworks.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
 		</dict>
 		<key>59E262531FFAFCEF14615E34</key>
 		<dict>
@@ -1101,12 +1158,18 @@ fi
 			<key>showEnvVarsInLog</key>
 			<string>0</string>
 		</dict>
-		<key>B7415F9A94AF4939A0900F26</key>
+		<key>A9FD5ED58C4DC63381731395</key>
 		<dict>
-			<key>fileRef</key>
-			<string>E2DE70F8BCF94BA483D0D3AC</string>
+			<key>explicitFileType</key>
+			<string>wrapper.framework</string>
+			<key>includeInIndex</key>
+			<string>0</string>
 			<key>isa</key>
-			<string>PBXBuildFile</string>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>Pods.framework</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
 		</dict>
 		<key>B9F1C1155B3BFDC20322D7CA</key>
 		<dict>
@@ -1169,6 +1232,20 @@ fi
 			<key>showEnvVarsInLog</key>
 			<string>0</string>
 		</dict>
+		<key>DE5BBA36147EE493D03A0CFF</key>
+		<dict>
+			<key>fileRef</key>
+			<string>20C309259ECFE65064F8DF96</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Weak</string>
+				</array>
+			</dict>
+		</dict>
 		<key>E01C7C356384BD8CD74E7B04</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -1183,19 +1260,6 @@ fi
 			<string>Pods/Target Support Files/Pods/Pods.release.xcconfig</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E2DE70F8BCF94BA483D0D3AC</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>archive.ar</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>libPods.a</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
 		</dict>
 		<key>F77833E428D306BEB828454B</key>
 		<dict>
