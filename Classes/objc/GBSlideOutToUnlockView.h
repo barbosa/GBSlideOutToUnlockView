@@ -65,47 +65,48 @@
  *  GBSlideOutToUnlockView offers a very simple way to perform an unlock action
  *  from inside to outside.
  */
+IB_DESIGNABLE
 @interface GBSlideOutToUnlockView : UIView
 
 /**
  *  The object implementing GBSlideOutToUnlockViewDelegate protocol that will handle
  *  the unlock messasages.
  */
-@property (nonatomic, weak) id<GBSlideOutToUnlockViewDelegate> delegate;
+@property (nonatomic, weak) IBOutlet id<GBSlideOutToUnlockViewDelegate> delegate;
 
 /**
  *  The inner circle's radius.
  */
-@property (nonatomic, assign) CGFloat innerCircleRadius;
+@property (nonatomic, assign) IBInspectable CGFloat innerCircleRadius;
 
 /**
  *  The outer circle's radius.
  */
-@property (nonatomic, assign) CGFloat outerCircleRadius;
+@property (nonatomic, assign) IBInspectable CGFloat outerCircleRadius;
 
 /**
  *  The inner circle's drawing color.
  */
-@property (nonatomic, strong) UIColor *innerCircleColor;
+@property (nonatomic, strong) IBInspectable UIColor *innerCircleColor;
 
 /**
  *  The outer circle's drawing color.
  */
-@property (nonatomic, strong) UIColor *outerCircleColor;
+@property (nonatomic, strong) IBInspectable UIColor *outerCircleColor;
 
 /**
  *  The draggable buttons's background color.
  */
-@property (nonatomic, strong) UIColor *draggableButtonBackgroundColor;
+@property (nonatomic, strong) IBInspectable UIColor *draggableButtonBackgroundColor;
 
 /**
  *  The draggable button image's tint color.
  */
-@property (nonatomic, strong) UIColor *draggableImageTintColor;
+@property (nonatomic, strong) IBInspectable UIColor *draggableImageTintColor;
 
 /**
  *  The draggable button's image.
  */
-@property (nonatomic, strong) UIImage *draggableImage;
+@property (nonatomic, strong) IBInspectable UIImage *draggableImage;
 
 @end

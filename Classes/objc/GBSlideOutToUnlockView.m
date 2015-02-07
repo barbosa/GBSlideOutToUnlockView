@@ -10,11 +10,17 @@
 
 #import <QuartzCore/QuartzCore.h>
 
+CGPoint p_fixedCenter(CGRect frame) {
+    CGFloat _fixedX = (CGRectGetMaxX(frame) - CGRectGetMinX(frame)) / 2.0;
+    CGFloat _fixedY = (CGRectGetMaxY(frame) - CGRectGetMinY(frame)) / 2.0;
+    return CGPointMake(_fixedX, _fixedY);
+}
 
 static CGFloat const kDefaultInnerCircleRadius = 25.0f;
 
 @interface GBSlideOutToUnlockView ()
 {
+    BOOL _a;
     BOOL _unlockOnRelease;
     CGFloat _distanceMoved;
 }
@@ -27,13 +33,49 @@ static CGFloat const kDefaultInnerCircleRadius = 25.0f;
 
 @implementation GBSlideOutToUnlockView
 
+#pragma mark - Ctors
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        [self setupViews];
+    }
+    return self;
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor clearColor];
+#if !TARGET_INTERFACE_BUILDER
+        [self setupViews];
+#endif
     }
     return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self setupViews];
+    }
+    return self;
+}
+
+#pragma mark - Setup
+
+- (void)setupViews
+{
+    self.backgroundColor = [UIColor clearColor];
+    [self addRedeemImageAtCenter];
+    [self addPanGestureRecognizerToImage];
+}
+
+- (void)prepareForInterfaceBuilder
+{
+    [self setupViews];
 }
 
 #pragma mark - Acessors
@@ -80,9 +122,6 @@ static CGFloat const kDefaultInnerCircleRadius = 25.0f;
 {
     [self drawCircleWithRadius:self.innerCircleRadius color:self.innerCircleColor];
     [self drawCircleWithRadius:self.outerCircleRadius color:self.outerCircleColor];
-    
-    [self addRedeemImageAtCenter];
-    [self addPanGestureRecognizerToImage];
 }
 
 - (void)drawCircleWithRadius:(CGFloat)radius color:(UIColor *)color
@@ -91,8 +130,8 @@ static CGFloat const kDefaultInnerCircleRadius = 25.0f;
     CGContextSetLineWidth(context, 1.0);
     CGContextSetStrokeColorWithColor(context, color.CGColor);
     
-    CGRect circle = CGRectMake(self.center.x - radius,
-                               self.center.y - radius,
+    CGRect circle = CGRectMake(p_fixedCenter(self.frame).x - radius,
+                               p_fixedCenter(self.frame).y - radius,
                                2 * radius,
                                2 * radius);
     
@@ -115,8 +154,8 @@ static CGFloat const kDefaultInnerCircleRadius = 25.0f;
     [_dragButton setImage:image forState:UIControlStateNormal];
     
     [self addSubview:_dragButton];
-    
-    _dragButton.center = self.center;
+
+    _dragButton.center = p_fixedCenter(self.frame);
 }
 
 #pragma mark - Gesture Recognizers
@@ -129,6 +168,7 @@ static CGFloat const kDefaultInnerCircleRadius = 25.0f;
 
 - (void)handlePan:(UIPanGestureRecognizer *)gestureRecognizer
 {
+    CGPoint _fixedCenter = p_fixedCenter(self.frame);
     if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
         _distanceMoved = 0.0f;
         if ([_delegate respondsToSelector:@selector(slideOutToUnlockViewDidStartToDrag:)]) {
@@ -138,9 +178,9 @@ static CGFloat const kDefaultInnerCircleRadius = 25.0f;
     
     if (gestureRecognizer.state == UIGestureRecognizerStateChanged) {
         CGPoint translation = [gestureRecognizer translationInView:self];
-        _dragButton.center = CGPointMake(self.center.x + translation.x,
-                                         self.center.y + translation.y);
-        _distanceMoved = sqrt(pow(_dragButton.center.x-self.center.x, 2) + pow(_dragButton.center.y-self.center.y, 2));
+        _dragButton.center = CGPointMake(_fixedCenter.x + translation.x,
+                                         _fixedCenter.y + translation.y);
+        _distanceMoved = sqrt(pow(_dragButton.center.x-_fixedCenter.x, 2) + pow(_dragButton.center.y-_fixedCenter.y, 2));
         
         if ([self.delegate respondsToSelector:@selector(slideOutToUnlockView:didDragDistance:)])
             [self.delegate slideOutToUnlockView:self didDragDistance:_distanceMoved];
@@ -162,7 +202,7 @@ static CGFloat const kDefaultInnerCircleRadius = 25.0f;
         }
         
         [UIView animateWithDuration:0.2f animations:^{
-            _dragButton.center = self.center;
+            _dragButton.center = _fixedCenter;
         }];
     }
 }
