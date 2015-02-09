@@ -2,6 +2,7 @@ use_frameworks!
 
 pod "GBSlideOutToUnlockView", :path => "../"
 
-target 'GBSlideOutToUnlockViewExampleTests', :exclusive => true do
+target 'AcceptanceTests', :exclusive => true do
   pod 'KIF', '~> 3.0'
+  pod "GBSlideOutToUnlockView", :path => "../"
 end

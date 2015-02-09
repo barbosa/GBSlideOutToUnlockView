@@ -68,6 +68,8 @@ static CGFloat const kDefaultInnerCircleRadius = 25.0f;
 
 - (void)setupViews
 {
+    self.accessibilityLabel = @"unlock view";
+    
     self.backgroundColor = [UIColor clearColor];
     [self addRedeemImageAtCenter];
     [self addPanGestureRecognizerToImage];
@@ -142,6 +144,7 @@ static CGFloat const kDefaultInnerCircleRadius = 25.0f;
 - (void)addRedeemImageAtCenter
 {
     _dragButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    _dragButton.accessibilityLabel = @"drag button";
     _dragButton.frame = CGRectMake(0, 0, 2*self.innerCircleRadius, 2*self.innerCircleRadius);
     _dragButton.backgroundColor = self.draggableButtonBackgroundColor;
     _dragButton.tintColor = self.draggableImageTintColor;
