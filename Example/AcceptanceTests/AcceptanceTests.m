@@ -61,17 +61,17 @@
 
     XCTAssertFalse(delegate.unlocked);
 }
-
-- (void)testDragToOutsideUnlockIt
-{
-    CGPoint currentPoint = [dragButton convertPoint:dragButton.center fromView:dragButton.superview];
-    CGPoint outsidePoint = CGPointMake(
-        currentPoint.x + (arc4random() % (int)unlockView.outerCircleRadius) * 2.0,
-        currentPoint.y + (arc4random() % (int)unlockView.outerCircleRadius) * 2.0
-    );
-    [dragButton dragFromPoint:currentPoint toPoint:outsidePoint];
-    
-    XCTAssertTrue(delegate.unlocked);
-}
+//
+//- (void)testDragToOutsideUnlockIt
+//{
+//    CGPoint currentPoint = [dragButton convertPoint:dragButton.center fromView:dragButton.superview];
+//    CGPoint outsidePoint = CGPointMake(
+//        currentPoint.x + (arc4random() % (int)unlockView.outerCircleRadius) * 2.0,
+//        currentPoint.y + (arc4random() % (int)unlockView.outerCircleRadius) * 2.0
+//    );
+//    [dragButton dragFromPoint:currentPoint toPoint:outsidePoint];
+//    
+//    XCTAssertTrue(delegate.unlocked);
+//}
 
 @end
