@@ -1,4 +1,4 @@
-# GBSlideOutToUnlockView
+# [DEPRECATED] GBSlideOutToUnlockView
 
 
 [![Version](http://cocoapod-badges.herokuapp.com/v/GBSlideOutToUnlockView/badge.png)](http://cocoadocs.org/docsets/GBSlideOutToUnlockView)
